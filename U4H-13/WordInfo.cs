@@ -17,6 +17,12 @@ namespace U4H_13
             Count = count;
             Word = word;
         }
+        public override string ToString()
+        {
+            string line;
+            line = String.Format("{0}", Word);
+            return line;
+        }
         public int CompareTo(WordInfo other)
         {
             int comparison;
@@ -26,6 +32,15 @@ namespace U4H_13
                 return comparison;
             }
             return string.Compare(Word, other.Word, StringComparison.OrdinalIgnoreCase);
+        }
+        public override bool Equals(object obj)
+        {
+            WordInfo other = (WordInfo)obj;
+            return string.Equals(Word, other.Word, StringComparison.OrdinalIgnoreCase);
+        }
+        public override int GetHashCode()
+        {
+            return Word.ToLowerInvariant().GetHashCode();
         }
     }
 }

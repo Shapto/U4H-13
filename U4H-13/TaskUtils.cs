@@ -47,22 +47,43 @@ namespace U4H_13
             }
             return count;
         }
-        public static List<string> UpToTenWords(List<WordInfo> wordlist)
+        public static List<string> NonDuplicates(List<WordInfo> wordList)
         {
             List<string> Task1Words = new List<string>();
-            for (int i = 0; i < wordlist.Count; i++)
+            for (int i = 0; i < wordList.Count; i++)
             {
-                if (wordlist[i].Duplicate == false && wordlist[i].Count == 1 && Task1Words.Count != 10)
+                if (wordList[i].Duplicate == false && wordList[i].Count == 1 && !Task1Words.Contains(wordList[i].Word))
                 {
-                    Task1Words.Add(wordlist[i].Word);
+                    Task1Words.Add(wordList[i].Word);
                 }
             }
             return Task1Words;
         }
+        public static List<WordInfo> DuplicateWords(List<WordInfo> wordlist1, List<WordInfo> wordlist2)
+        {
+            List<WordInfo> Task2Words = new List<WordInfo>();
+            for (int i = 0; i < wordlist1.Count; i++)
+            {
+                WordInfo word1 = wordlist1[i];
+                for (int j = 0; j < wordlist2.Count; j++)
+                {
+                    WordInfo word2 = wordlist2[j];
+                    if (word1.Duplicate == true && !Task2Words.Contains(word1))
+                    {
+                        Task2Words.Add(word1);
+                    }
+                    else if (word2.Duplicate == true && !Task2Words.Contains(word2))
+                    {
+                        Task2Words.Add(word2);
+                    }
+                }
+            }
+            return Task2Words;
+        }
         /// <summary>
         /// Selection sort, which works by finding the lowest value in an array and moving it to the front, repeating until the array is sorted.
         /// </summary>
-        public List<WordInfo> Sort(List<WordInfo> wordList)
+        public static List<WordInfo> Sort(List<WordInfo> wordList)
         {
             for (int i = 0; i < wordList.Count - 1; i++)
             {

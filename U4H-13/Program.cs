@@ -21,8 +21,12 @@ namespace U4H_13
             File.Delete(out2);
             List<WordInfo> wordList1 = InOut.ReadWords(in1, in2, punctuation);
             List<WordInfo> wordList2 = InOut.ReadWords(in2, in1, punctuation);
-            List<string> Task1Words = TaskUtils.UpToTenWords(wordList1);
+            List<string> Task1Words = TaskUtils.NonDuplicates(wordList1);
             InOut.PrintNonDuplicates(Task1Words, out1, in1, in2);
+            List<WordInfo> Task2Words = TaskUtils.DuplicateWords(wordList1, wordList2);
+            List<WordInfo> Task2WordsSorted = TaskUtils.Sort(Task2Words);
+            InOut.PrintDuplicates(Task2WordsSorted, out1);
+
         }
     }
 }

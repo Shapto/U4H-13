@@ -41,18 +41,44 @@ namespace U4H_13
         {
             using (StreamWriter writer = new StreamWriter(out1, true))
             {
-                writer.WriteLine("Žodžiai, kurie yra faile {0}, bet nėra faile {1} ir kartojasi tik vieną kartą:", in1, in2);
-                writer.WriteLine("Žodžių skaičius: {0}", Task1Words.Count);
                 if (Task1Words.Count > 0)
                 {
+                    writer.WriteLine("Žodžiai, kurie yra faile {0}, bet nėra faile {1} ir kartojasi tik vieną kartą:", in1, in2);
+                    writer.WriteLine("Žodžių skaičius: {0}", Task1Words.Count);
                     for (int i = 0; i < Task1Words.Count; i++)
                     {
-                        writer.WriteLine(Task1Words[i]);
+                        if (i < 10)
+                        {
+                            writer.WriteLine(Task1Words[i]);
+                        }
                     }
                 }
                 else
                 {
                     Console.WriteLine("{0} yra tusčias.", in1);
+                }
+            }
+        }
+        public static void PrintDuplicates(List<WordInfo> Task2WordsSorted, string out1)
+        {
+            using (StreamWriter writer = new StreamWriter(out1, true))
+            {
+                writer.WriteLine(" ");
+                writer.WriteLine("Žodžiai, kurie yra abiejose failuose:");
+                if (Task2WordsSorted.Count > 0)
+                {
+                    writer.WriteLine("Žodžių skaičius: {0}", Task2WordsSorted.Count);
+                    for (int i = 0;i < Task2WordsSorted.Count; i++)
+                    {
+                        if (i < 10)
+                        {
+                            writer.WriteLine(Task2WordsSorted[i]);
+                        }
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Pasikartojanciu žodžiu masyvas tusčias arba nebuvo sudarytas.");
                 }
             }
         }
