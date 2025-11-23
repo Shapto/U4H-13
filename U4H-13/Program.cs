@@ -12,18 +12,6 @@ namespace U4H_13
         static void Main(string[] args)
         {
             //streamreader, regex, string metodai
-            //dont read the entire file at once
-            //skaityti faila su while loop
-            //using (StreamReader reader = new StreamReader(fin))
-            //string line;
-            //while ((line = reader.ReadLine()) != null)
-
-            //mano knyga.txt dalis uzduoties
-            //kopijuoti text kol pasiekia zodi is antro failo
-            //stop. vietoj to kopijuoti antra faila.
-            //jei antrame faile yra zodis is pirmo, tai reverse
-            //copy kol pasiekiama abieju failu pabaiga
-
             const string in1 = "Knyga1.txt";
             const string in2 = "Knyga2.txt";
             const string out1 = "Rodikliai.txt";
@@ -31,6 +19,10 @@ namespace U4H_13
             char[] punctuation = { ' ', '.', ',', '!', '?', ':', ';', '(', ')', '\t' };
             File.Delete(out1);
             File.Delete(out2);
+            List<WordInfo> wordList1 = InOut.ReadWords(in1, in2, punctuation);
+            List<WordInfo> wordList2 = InOut.ReadWords(in2, in1, punctuation);
+            List<string> Task1Words = TaskUtils.UpToTenWords(wordList1);
+            InOut.PrintNonDuplicates(Task1Words, out1, in1, in2);
         }
     }
 }

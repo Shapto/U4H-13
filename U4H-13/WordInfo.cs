@@ -11,11 +11,21 @@ namespace U4H_13
         public bool Duplicate { get; set; }
         public int Count { get; set; }
         public string Word { get; set; }
-        public WordInfo (bool duplicate, bool copied, int count, string word)
+        public WordInfo (bool duplicate, int count, string word)
         {
             Duplicate = duplicate;
             Count = count;
             Word = word;
+        }
+        public int CompareTo(WordInfo other)
+        {
+            int comparison;
+            comparison = Count.CompareTo(other.Count);
+            if (comparison != 0)
+            {
+                return comparison;
+            }
+            return string.Compare(Word, other.Word, StringComparison.OrdinalIgnoreCase);
         }
     }
 }
