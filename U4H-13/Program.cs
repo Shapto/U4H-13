@@ -11,22 +11,21 @@ namespace U4H_13
     {
         static void Main(string[] args)
         {
-            //streamreader, regex, string metodai
             const string in1 = "Knyga1.txt";
             const string in2 = "Knyga2.txt";
             const string out1 = "Rodikliai.txt";
             const string out2 = "ManoKnyga.txt";
             char[] punctuation = { ' ', '.', ',', '!', '?', ':', ';', '(', ')', '-', '\t' };
-            File.Delete(out1);
+            File.Delete(out1); //Deletes result files if they exist
             File.Delete(out2);
-            List<WordInfo> wordList1 = InOut.ReadWords(in1, in2, punctuation);
+            List<WordInfo> wordList1 = InOut.ReadWords(in1, in2, punctuation); //Creates word lists
             List<WordInfo> wordList2 = InOut.ReadWords(in2, in1, punctuation);
-            List<string> Task1Words = TaskUtils.NonDuplicates(wordList1);
+            List<string> Task1Words = TaskUtils.NonDuplicates(wordList1); //Creates and prints non duplicates
             InOut.PrintNonDuplicates(Task1Words, out1, in1, in2);
-            List<WordInfo> Task2Words = TaskUtils.DuplicateWords(wordList1, wordList2);
+            List<WordInfo> Task2Words = TaskUtils.DuplicateWords(wordList1, wordList2); //Gets words from both files, sorts and prints them into the first output file
             List<WordInfo> Task2WordsSorted = TaskUtils.Sort(Task2Words);
             InOut.PrintDuplicates(Task2WordsSorted, out1);
-            InOut.MyBook(wordList1, wordList2, out2);
+            InOut.MyBook(wordList1, wordList2, out2); //Appends text according to the task's rules into the second output file.
         }
     }
 }

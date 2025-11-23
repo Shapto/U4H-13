@@ -11,6 +11,13 @@ namespace U4H_13
 {
     class InOut
     {
+        /// <summary>
+        /// Reads words, makes an object containing its information and adds them to a list
+        /// </summary>
+        /// <param name="in1">first input file</param>
+        /// <param name="in2">second input file</param>
+        /// <param name="punctuation">char[] which contains all punctuation</param>
+        /// <returns></returns>
         public static List<WordInfo> ReadWords(string in1, string in2, char[] punctuation)
         {
             List<WordInfo> wordList = new List<WordInfo>();
@@ -38,6 +45,13 @@ namespace U4H_13
             }
             return wordList;
         }
+        /// <summary>
+        /// Writes total word count and the first 10 elements the string list
+        /// </summary>
+        /// <param name="Task1Words">contains words which arent in the second file</param>
+        /// <param name="out1">first output file</param>
+        /// <param name="in1">first input file</param>
+        /// <param name="in2">second input file</param>
         public static void PrintNonDuplicates(List<string> Task1Words, string out1, string in1, string in2)
         {
             using (StreamWriter writer = new StreamWriter(out1, true))
@@ -60,6 +74,11 @@ namespace U4H_13
                 }
             }
         }
+        /// <summary>
+        /// Prints words which are in both lists, after being sorted in main.
+        /// </summary>
+        /// <param name="Task2WordsSorted">Sorted WordInfo list containing repeating words.</param>
+        /// <param name="out1">first output file</param>
         public static void PrintDuplicates(List<WordInfo> Task2WordsSorted, string out1)
         {
             using (StreamWriter writer = new StreamWriter(out1, true))
@@ -83,6 +102,12 @@ namespace U4H_13
                 }
             }
         }
+        /// <summary>
+        /// Writes text from both files into one singular file according to the task's rules
+        /// </summary>
+        /// <param name="wordList1">the first list containing words</param>
+        /// <param name="wordList2">the first list containing words</param>
+        /// <param name="out2">the second output file</param>
         public static void MyBook(List<WordInfo> wordList1, List<WordInfo> wordList2, string out2)
         {
             int index1 = 0, index2 = 0;
@@ -95,6 +120,16 @@ namespace U4H_13
                 }
             }
         }
+        /// <summary>
+        /// Writes words. Every time the index is divisible by 10 cleanly, it writes into a new line. When it meets a new not copied word from the other file
+        /// it returns.
+        /// </summary>
+        /// <param name="wordList1"></param>
+        /// <param name="wordList2"></param>
+        /// <param name="index1"></param>
+        /// <param name="index2"></param>
+        /// <param name="writer"></param>
+        /// <returns></returns>
         private static int Copy(List<WordInfo> wordList1, List<WordInfo> wordList2, int index1, int index2, StreamWriter writer)
         {
             while (index1 < wordList1.Count)
