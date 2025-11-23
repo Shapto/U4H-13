@@ -9,13 +9,15 @@ namespace U4H_13
     class WordInfo
     {
         public bool Duplicate { get; set; }
+        public bool Copied { get; set; }
         public int Count { get; set; }
         public string Word { get; set; }
-        public WordInfo (bool duplicate, int count, string word)
+        public WordInfo (bool duplicate, int count, string word, bool copied)
         {
             Duplicate = duplicate;
             Count = count;
             Word = word;
+            Copied = copied;
         }
         public override string ToString()
         {

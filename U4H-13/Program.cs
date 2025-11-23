@@ -16,7 +16,7 @@ namespace U4H_13
             const string in2 = "Knyga2.txt";
             const string out1 = "Rodikliai.txt";
             const string out2 = "ManoKnyga.txt";
-            char[] punctuation = { ' ', '.', ',', '!', '?', ':', ';', '(', ')', '\t' };
+            char[] punctuation = { ' ', '.', ',', '!', '?', ':', ';', '(', ')', '-', '\t' };
             File.Delete(out1);
             File.Delete(out2);
             List<WordInfo> wordList1 = InOut.ReadWords(in1, in2, punctuation);
@@ -26,7 +26,7 @@ namespace U4H_13
             List<WordInfo> Task2Words = TaskUtils.DuplicateWords(wordList1, wordList2);
             List<WordInfo> Task2WordsSorted = TaskUtils.Sort(Task2Words);
             InOut.PrintDuplicates(Task2WordsSorted, out1);
-
+            InOut.MyBook(wordList1, wordList2, out2);
         }
     }
 }

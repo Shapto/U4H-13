@@ -90,7 +90,7 @@ namespace U4H_13
                 int min = i;
                 for (int j = i + 1; j < wordList.Count; j++)
                 {
-                    if (wordList[j].CompareTo(wordList[min]) < 0)
+                    if (wordList[j].CompareTo(wordList[min]) > 0)
                     {
                         min = j;
                     }
