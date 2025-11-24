@@ -53,6 +53,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Knyga1 - Copy.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Knyga1.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

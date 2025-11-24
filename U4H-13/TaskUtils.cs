@@ -8,6 +8,13 @@ namespace U4H_13
 {
     class TaskUtils
     {
+        /// <summary>
+        /// Checks if the word exists in a file
+        /// </summary>
+        /// <param name="word"></param>
+        /// <param name="filePath"></param>
+        /// <param name="punctuation"></param>
+        /// <returns></returns>
         public static bool ExistsInFile(string word, string filePath, char[] punctuation)
         {
             using (StreamReader reader = new StreamReader(filePath))
@@ -27,6 +34,13 @@ namespace U4H_13
             }
             return false;
         }
+        /// <summary>
+        /// Finds the amount of times a word appears in a file.
+        /// </summary>
+        /// <param name="filePath"></param>
+        /// <param name="word"></param>
+        /// <param name="punctuation"></param>
+        /// <returns></returns>
         public static int CountOccurences(string filePath, string word, char[] punctuation)
         {
             int count = 0;
@@ -47,6 +61,11 @@ namespace U4H_13
             }
             return count;
         }
+        /// <summary>
+        /// Finds words which are only in the first list
+        /// </summary>
+        /// <param name="wordList"></param>
+        /// <returns></returns>
         public static List<string> NonDuplicates(List<WordInfo> wordList)
         {
             List<string> Task1Words = new List<string>();
@@ -59,6 +78,12 @@ namespace U4H_13
             }
             return Task1Words;
         }
+        /// <summary>
+        /// Finds words which are in both lists and adds them to a singular list.
+        /// </summary>
+        /// <param name="wordlist1"></param>
+        /// <param name="wordlist2"></param>
+        /// <returns></returns>
         public static List<WordInfo> DuplicateWords(List<WordInfo> wordlist1, List<WordInfo> wordlist2)
         {
             List<WordInfo> Task2Words = new List<WordInfo>();
