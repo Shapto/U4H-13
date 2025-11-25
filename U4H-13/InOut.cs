@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.IO;
@@ -7,6 +8,7 @@ using System.Runtime.ConstrainedExecution;
 using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace U4H_13
@@ -186,15 +188,20 @@ namespace U4H_13
                 {
                     string temp1 = match.Value.TrimEnd(punctuation);
                     int index = GetWordIndex(temp1, wordList);
+                    if (writtenToLine && lastMatch.EndsWith("."))
+                    {
+                        writer.Write('\n');
+                        writtenToLine = false;
+                    }
                     if (index != -1 && wordList[index].Duplicate && !wordList[index].Copied)
                     {
-                        if (writtenToLine && lastMatch.EndsWith("."))
-                        {
-                            writer.Write('\n');
-                        }
                         break;
                     }
                     writer.Write(temp);
+                    if(index != -1)
+                    {
+                        wordList[index].Copied = true;
+                    }
                     writtenToLine = true;
                     lastMatch = temp;
                 }
