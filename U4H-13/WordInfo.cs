@@ -12,9 +12,13 @@ namespace U4H_13
         /// Word information
         /// </summary>
         public bool Duplicate { get; set; }
+
         public bool Copied { get; set; }
+
         public int Count { get; set; }
+
         public string Word { get; set; }
+
         public WordInfo (bool duplicate, int count, string word, bool copied)
         {
             Duplicate = duplicate;
@@ -22,6 +26,7 @@ namespace U4H_13
             Word = word;
             Copied = copied;
         }
+
         /// <summary>
         /// Prints only the word and no other information if printing only the word object.
         /// </summary>
@@ -32,6 +37,7 @@ namespace U4H_13
             line = String.Format("{0}", Word);
             return line;
         }
+
         /// <summary>
         /// Used for sorting. first sorts by count and then by the ABCs using Word string.
         /// </summary>
@@ -47,6 +53,7 @@ namespace U4H_13
             }
             return string.Compare(Word, other.Word, StringComparison.OrdinalIgnoreCase);
         }
+
         /// <summary>
         /// Needed to compare only by word, so capitalized words arent treated any different when adding to a list.
         /// </summary>
@@ -57,6 +64,7 @@ namespace U4H_13
             WordInfo other = (WordInfo)obj;
             return string.Equals(Word, other.Word, StringComparison.OrdinalIgnoreCase);
         }
+
         public override int GetHashCode()
         {
             return Word.ToLowerInvariant().GetHashCode();

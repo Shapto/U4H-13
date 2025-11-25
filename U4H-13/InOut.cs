@@ -29,15 +29,15 @@ namespace U4H_13
                     string[] words = line.Split(punctuation, StringSplitOptions.RemoveEmptyEntries);
                     foreach (string word in words)
                     {
-                        if (TaskUtils.ExistsInFile(word, in2, punctuation))
+                        if (TaskUtils.ExistsInFile(word, in2))
                         {
-                            int count = TaskUtils.CountOccurences(in1, word, punctuation) + TaskUtils.CountOccurences(in2, word, punctuation);
+                            int count = TaskUtils.CountOccurences(in1, word) + TaskUtils.CountOccurences(in2, word);
                             WordInfo word1 = new WordInfo(true, count, word, false);
                             wordList.Add(word1);
                         }
                         else
                         {
-                            WordInfo word1 = new WordInfo(false, TaskUtils.CountOccurences(in1, word, punctuation), word, false);
+                            WordInfo word1 = new WordInfo(false, TaskUtils.CountOccurences(in1, word), word, false);
                             wordList.Add(word1);
                         }
                     }
@@ -45,6 +45,7 @@ namespace U4H_13
             }
             return wordList;
         }
+
         /// <summary>
         /// Writes total word count and the first 10 elements the string list
         /// </summary>
@@ -74,6 +75,7 @@ namespace U4H_13
                 }
             }
         }
+
         /// <summary>
         /// Prints words which are in both lists, after being sorted in main.
         /// </summary>
@@ -102,6 +104,7 @@ namespace U4H_13
                 }
             }
         }
+
         /// <summary>
         /// Writes text from both files into one singular file according to the task's rules
         /// </summary>
@@ -120,6 +123,7 @@ namespace U4H_13
                 }
             }
         }
+
         /// <summary>
         /// Writes words. Every time the index is divisible by 10 cleanly, it writes into a new line. When it meets a new not copied word from the other file
         /// it returns.
@@ -139,7 +143,7 @@ namespace U4H_13
                 {
                     return index1;
                 }
-                if (index1 % 10 == 0)
+                if (index1 % 10 == 0 && index1 != 0)
                 {
                     writer.WriteLine(word + " ");
                 }

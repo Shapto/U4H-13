@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq.Expressions;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace U4H_13
@@ -15,25 +17,23 @@ namespace U4H_13
         /// <param name="filePath"></param>
         /// <param name="punctuation"></param>
         /// <returns></returns>
-        public static bool ExistsInFile(string word, string filePath, char[] punctuation)
+        public static bool ExistsInFile(string word, string filePath)
         {
             using (StreamReader reader = new StreamReader(filePath))
             {
                 string line;
                 while ((line = reader.ReadLine()) != null)
                 {
-                    string[] words = line.Split(punctuation, StringSplitOptions.RemoveEmptyEntries);
-                    foreach (string w in words)
+                    string expression = @"\b" + word + @"\b";
+                    if (Regex.IsMatch(line, expression))
                     {
-                        if (w == word)
-                        {
-                            return true;
-                        }
+                        return true;
                     }
                 }
             }
             return false;
         }
+
         /// <summary>
         /// Finds the amount of times a word appears in a file.
         /// </summary>
@@ -41,7 +41,7 @@ namespace U4H_13
         /// <param name="word"></param>
         /// <param name="punctuation"></param>
         /// <returns></returns>
-        public static int CountOccurences(string filePath, string word, char[] punctuation)
+        public static int CountOccurences(string filePath, string word)
         {
             int count = 0;
             using (StreamReader reader = new StreamReader(filePath))
@@ -49,18 +49,16 @@ namespace U4H_13
                 string line;
                 while ((line = reader.ReadLine()) != null)
                 {
-                    string[] words = line.Split(punctuation, StringSplitOptions.RemoveEmptyEntries);
-                    foreach (string w in words)
+                    string expression = @"\b" + word + @"\b";
+                    foreach (var regexMatch in Regex.Matches(line, expression))
                     {
-                        if (w == word)
-                        {
-                            count++;
-                        }
+                        count++;
                     }
                 }
             }
             return count;
         }
+
         /// <summary>
         /// Finds words which are only in the first list
         /// </summary>
@@ -78,6 +76,7 @@ namespace U4H_13
             }
             return Task1Words;
         }
+
         /// <summary>
         /// Finds words which are in both lists and adds them to a singular list.
         /// </summary>
@@ -105,6 +104,7 @@ namespace U4H_13
             }
             return Task2Words;
         }
+
         /// <summary>
         /// Selection sort, which works by finding the lowest value in an array and moving it to the front, repeating until the array is sorted.
         /// </summary>
