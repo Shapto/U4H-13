@@ -178,6 +178,7 @@ namespace U4H_13
         private static void Write(StreamWriter writer, string line, char[] punctuation, List<WordInfo> wordList)
         {
             bool writtenToLine = false;
+            string lastMatch = null;
             foreach (Match match in Regex.Matches(line, @"\S+|\s"))
             {
                 string temp = match.Value;
@@ -187,7 +188,7 @@ namespace U4H_13
                     int index = GetWordIndex(temp1, wordList);
                     if (index != -1 && wordList[index].Duplicate && !wordList[index].Copied)
                     {
-                        if (writtenToLine)
+                        if (writtenToLine && lastMatch.EndsWith("."))
                         {
                             writer.Write('\n');
                         }
@@ -195,6 +196,7 @@ namespace U4H_13
                     }
                     writer.Write(temp);
                     writtenToLine = true;
+                    lastMatch = temp;
                 }
                 else
                 {
