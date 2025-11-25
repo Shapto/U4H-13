@@ -188,7 +188,7 @@ namespace U4H_13
                 {
                     string temp1 = match.Value.TrimEnd(punctuation);
                     int index = GetWordIndex(temp1, wordList);
-                    if (writtenToLine && lastMatch.EndsWith("."))
+                    if (writtenToLine && (lastMatch.EndsWith(".") | lastMatch.EndsWith(":")))
                     {
                         writer.Write('\n');
                         writtenToLine = false;

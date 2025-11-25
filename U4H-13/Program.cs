@@ -12,8 +12,8 @@ namespace U4H_13
     {
         static void Main(string[] args)
         {
-            const string in1 = "Knyga1s.txt";
-            const string in2 = "Knyga2s.txt";
+            const string in1 = "Knyga1.txt";
+            const string in2 = "Knyga2.txt";
             const string out1 = "Rodikliai.txt";
             const string out2 = "ManoKnyga.txt";
             char[] punctuation = { ' ', '.', ',', '!', '?', ':', ';', '(', ')', '-', '\t', '\n'};
