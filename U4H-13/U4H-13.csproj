@@ -71,6 +71,8 @@
     <Content Include="Knyga4.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="KnygaTest1.txt" />
+    <Content Include="KnygaTest2.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

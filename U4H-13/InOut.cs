@@ -1,15 +1,7 @@
 ﻿using System;
-using System.CodeDom.Compiler;
 using System.Collections.Generic;
-using System.Collections.Specialized;
 using System.IO;
-using System.Linq;
-using System.Runtime.ConstrainedExecution;
-using System.Runtime.Remoting.Messaging;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace U4H_13
 {
@@ -120,8 +112,10 @@ namespace U4H_13
         /// <summary>
         /// Writes text from both files into one singular file according to the task's rules
         /// </summary>
-        /// <param name="in1">the first list containing words</param>
-        /// <param name="in2">the first list containing words</param>
+        /// <param name="in1">the first input file</param>
+        /// <param name="in2">the second input file</param>
+        /// <param name="wordList1">the first list containing words</param>
+        /// <param name="wordList2">the second list containing words</param>
         /// <param name="out2">the second output file</param>
         public static void MyBook(string in1, string in2, string out2, List<WordInfo> wordList1, List<WordInfo> wordList2, char[] punctuation)
         {
